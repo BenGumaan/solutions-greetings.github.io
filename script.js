@@ -38,21 +38,26 @@
 
             reader.onload = function(e) {
                 let img = new Image();
+                const imgRatio = img.height / img.width
+                const winRatio = window.innerHeight / window.innerWidth
+                console.log("imgRatio: ", imgRatio);
+                console.log("winRatio: ", winRatio);
+                console.log("window.innerHeight: ", window.innerHeight);
+                console.log("window.innerWidth: ", window.innerWidth);
 
                 img.onload = function() {
-                    // console.log("image width", this.width);
-                    // console.log("image height", this.height);
-                    // console.log("screen width", screen.width);
-                    // console.log("screen height", screen.height);
-                    // console.log("screen width available", screen.availWidth);
-                    // console.log("screen height available", screen.availHeight);
-                    if (this.width > screen.width || this.height > screen.height) {
-                        alert('Please select a small image. The image width and height should be less than the screen width and height.');
 
-                        document.getElementById('theText').style.display = 'none';
-                        document.getElementById('bt').style.display = 'none';
-                        document.getElementById('textArea').style.display = 'none';
-                        document.getElementById('myimage').src = '';
+                    if (this.width > screen.width || this.height > screen.height) {
+                        // alert('Please select a small image. The image width and height should be less than the screen width and height.');
+
+                        document.getElementById('theText').style.display = 'block';
+                        document.getElementById('bt').style.display = 'block';
+                        document.getElementById('textArea').style.display = 'block';
+
+                        // document.getElementById('theText').style.display = 'none';
+                        // document.getElementById('bt').style.display = 'none';
+                        // document.getElementById('textArea').style.display = 'none';
+                        // document.getElementById('myimage').src = '';
                     } else {
                         document.getElementById('theText').style.display = 'block';
                         document.getElementById('bt').style.display = 'block';
@@ -66,6 +71,26 @@
             reader.readAsDataURL(fl.files[0]);
         }
     }
+
+    // const coverImg = (img, type = 'contain') => {
+    //     const imgRatio = img.height / img.width
+    //     const winRatio = window.innerHeight / window.innerWidth
+    //     console.log("imgRatio: ", imgRatio);
+    //     console.log("winRatio: ", winRatio);
+    //     if ((imgRatio < winRatio) || (imgRatio > winRatio)) {
+    //         const h = window.innerWidth * imgRatio
+    //         ctx.drawImage(img, 0, (window.innerHeight - h) / 2, window.innerWidth, h)
+    //         console.log("h: ", h);
+    //         console.log("window.innerWidth: ", window.innerWidth);
+    //     }
+    //     if ((imgRatio > winRatio) || (imgRatio < winRatio)) {
+    //         const w = window.innerWidth * winRatio / imgRatio
+    //         ctx.drawImage(img, (win.w - w) / 2, 0, w, window.innerHeight)
+    //         console.log("w: ", w);
+    //         console.log("window.innerWidth: ", window.innerWidth);
+    //     }
+    // }
+
 
     let textContainer;
     let t = 'أكتب اسمك هنا';
@@ -106,11 +131,14 @@
             let ctx = canvas.getContext("2d"); // Create canvas context.
 
             // Assign width and height.
-            canvas.width = img.width;
-            canvas.height = img.height;
+            img.width = 900;
+            img.height = 600;
+            canvas.width = img.width; // Make the canvas the same width as the image
+            canvas.height = img.height; // Make the canvas the same height as the image
 
             // Draw the image.
-            ctx.drawImage(img, 0, 0);
+            // ctx.drawImage(img, 0, 0);
+            ctx.drawImage(img, 0, 0, 900, 600); // define the default width and height of the image
 
             textContainer.style.border = 0;
 
