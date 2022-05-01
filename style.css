@@ -84,7 +84,8 @@ img {
     color: #fff;
     width: auto;
     padding: 5px;
-    text-align: left;
+    /* text-align: right; */
+    /* direction: rtl; */
     border: dashed 2px #ff7f27;
     font: 28px Calibri;
     display: block;
@@ -99,7 +100,7 @@ canvas {
     transition: all .5s ease;
     width: 300px;
     height: 50px;
-    border-radius: 30px;
+    border-radius: 5px;
     color: #008080;
     font-weight: 600;
     background-color: #fff;
@@ -118,7 +119,7 @@ canvas {
     transition: all .5s ease;
     width: 300px;
     height: 50px;
-    border-radius: 30px;
+    border-radius: 5px;
     color: #008080;
     font-weight: 600;
     background-color: #fff;
@@ -170,6 +171,10 @@ label {
 .mainContainer {
     width: 900px;
     height: 600px;
+}
+
+.credit {
+    /* text-align: center; */
 }
 
 
